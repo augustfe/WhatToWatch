@@ -1,13 +1,7 @@
-import pandas as pd
+from write_to_file import addToList
 
-df = pd.read_csv("serier.csv")
-
-print(df["ID"])
-
-a = 460627
-b = 12
-
-print(a in df.values)
-print(b in df.values)
-
-print(df.values)
+while True:
+    name = input("Input series name: ('q' to quit)\n")
+    addToList(name)
+    if name == "q":
+        break

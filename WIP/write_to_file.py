@@ -34,6 +34,3 @@ def addToList(name: str) -> None:
         writer_object.writerow([title, ID])
 
         f_object.close()
-
-
-addToList("Bones")
