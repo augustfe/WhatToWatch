@@ -1,6 +1,8 @@
 {
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "notebook.formatOnSave.enabled": true,
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "python.formatting.provider": "none"
+    }
 }
