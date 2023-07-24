@@ -1,6 +1,7 @@
 from imdb import Cinemagoer
-from IPython.display import clear_output
 from csv import writer
+import pandas as pd
+import os
 
 ia = Cinemagoer()
 
@@ -8,19 +9,22 @@ ia = Cinemagoer()
 def addToList(name: str) -> None:
     movies = ia.search_movie(name)
     correct = None
-    print("Assert correct found [y/n]")
 
     for movie in movies:
-        response = input(f"{movie['long imdb title']} [y/n]")
+        os.system("clear")
+        print("Assert correct found [y/n]")
+        response = input(f"{movie['long imdb title']}\n")
 
         if response == "y":
             correct = movie
             break
 
-        clear_output(wait=True)
-
     if correct is None:
         print("Series was not found")
+
+    df = pd.read_csv("serier.csv", dtype={"title": "str", "ID": "str"})
+    if correct.getID() in df.values:
+        return
 
     with open("serier.csv", "a") as f_object:
         writer_object = writer(f_object)
@@ -30,3 +34,6 @@ def addToList(name: str) -> None:
         writer_object.writerow([title, ID])
 
         f_object.close()
+
+
+addToList("Bones")
